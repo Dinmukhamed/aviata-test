@@ -21,23 +21,23 @@
       },
       enter: function (el, done) {
         var delay = el.dataset.index * 150
-        setTimeout(function () {
+        //setTimeout(function () {
           Velocity(
             el,
             { opacity: 1, height: '1.6em' },
-            { complete: done }
+            { complete: done },{ duration: 150 }
           )
-        }, delay)
+        //}, delay)
       },
       leave: function (el, done) {
         var delay = el.dataset.index * 150
-        setTimeout(function () {
+        //setTimeout(function () {
           Velocity(
             el,
             { opacity: 0, height: 0 },
-            { complete: done }
+            { complete: done },{ duration: 150 }
           )
-        }, delay)
+        //}, delay)
       }
     }
   }

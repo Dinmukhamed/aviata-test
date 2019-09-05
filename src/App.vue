@@ -16,9 +16,10 @@
           </div>
         </div>
         <div class="col-12 col-lg-9">
-          <custom-transition>
+          <custom-transition v-if="flightsFiltered.length">
             <result-item v-for="flight in flightsFiltered" :flight="flight" :key="flight.id"></result-item>
           </custom-transition>
+          <p class="" v-if="!flightsFiltered.length">Увы, по заданным критериям рейсов не найдено :(</p>
         </div>
       </div>
     </div>
