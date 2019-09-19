@@ -121,6 +121,24 @@
   margin-left: -12px;
   padding-left: 12px;
   padding-right: 12px;
+  .checkbox {
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+  }
+  .unchecked {
+    display: inline-block;
+    background: url("./assets/images/checkbox_normal.svg");
+  }
+  .checked {
+    background: url("./assets/images/checkbox_active.svg");
+  }
+  .unchecked-hover {
+    background: url("./assets/images/checkbox_hover.svg");
+  }
+  .checked-hover {
+    background: url("./assets/images/checkbox_indeterminate.svg");
+  }
   &:hover {
     background: #EBEBEB;
     cursor: pointer;

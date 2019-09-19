@@ -10,10 +10,10 @@
           <div class="d-flex justify-content-between justify-content-md-start">
             <div class="result-item-content-row-departure text-center pl-0 pr-3 pl-md-3">
               <div class="result-item-content-row-departure-date">
-                {{depDateTime | moment('D MMM, ddd')}}
+                {{flightInfo.dep_date | moment('D MMM, ddd')}}
               </div>
               <div class="result-item-content-row-departure-time">
-                {{depDateTime | moment('HH:mm')}}
+                {{flightInfo.dep_date | moment('HH:mm')}}
               </div>
             </div>
             <div class="result-item-content-row-path">
@@ -31,10 +31,10 @@
             </div>
             <div class="result-item-content-row-arrival text-center pr-0 pl-3 pr-md-3">
               <div class="result-item-content-row-arrival-date">
-                {{arrDateTime | moment('D MMM, ddd')}} <span v-if="depArrDiff > 0">+{{depArrDiff}}</span>
+                {{flightInfo.arr_date | moment('D MMM, ddd')}} <span v-if="depArrDiff > 0">+{{depArrDiff}}</span>
               </div>
               <div class="result-item-content-row-arrival-time">
-                {{arrDateTime | moment('HH:mm')}}
+                {{flightInfo.arr_date | moment('HH:mm')}}
               </div>
             </div>
           </div>
@@ -73,38 +73,32 @@
     props: ['flight'],
     computed: {
       flightInfo () {
-        return this.flight.itineraries[0][0]
+        return this.flight.itineraries[0][0];
       },
       logoUrl () {
-        return 'https://aviata.kz/static/airline-logos/80x80/' + this.flightInfo.carrier + '.png'
+        return 'https://aviata.kz/static/airline-logos/80x80/' + this.flightInfo.carrier + '.png';
       },
       airlineName () {
-        return this.flightInfo.carrier_name
-      },
-      depDateTime () {
-        return this.flightInfo.dep_date
-      },
-      arrDateTime () {
-        return this.flightInfo.arr_date
+        return this.flightInfo.carrier_name;
       },
       destinationCode () {
-        return this.flightInfo.stops ? this.flightInfo.segments[1].dest_code : this.flightInfo.segments[0].dest_code
+        return this.flightInfo.stops ? this.flightInfo.segments[1].dest_code : this.flightInfo.segments[0].dest_code;
       },
       transferInfo () {
         if (!this.flightInfo.stops) {
-          return 'прямой рейс'
+          return 'прямой рейс';
         }
 
         let city = this.flightInfo.segments[0].dest;
         let layover = this.flightInfo.layovers[0];
 
-        return 'через ' + city + ', ' + this.getFormattedTravelTime(layover)
+        return 'через ' + city + ', ' + this.getFormattedTravelTime(layover);
       },
       depArrDiff () {
         let a = this.$moment(this.depDateTime);
         let b = this.$moment(this.arrDateTime);
 
-        return Math.abs(a.format('D') - b.format('D'))
+        return Math.abs(a.format('D') - b.format('D'));
       }
     },
     methods: {
@@ -113,12 +107,10 @@
         let minutes = (time % 3600) / 60;
         let result = hours ? hours + ' ч ' : '';
         if (minutes) {
-          result += minutes + ' м'
+          result += minutes + ' м';
         }
-        return result
+        return result;
       }
-    },
-    mounted () {
     }
   }
 </script>

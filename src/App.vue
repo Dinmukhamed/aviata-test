@@ -75,32 +75,32 @@ export default {
   },
   methods: {
     updateFilterCompanies(e) {
-      this.filter.companies = e
+      this.filter.companies = e;
     },
     updateFilterTariff(e) {
-      this.filter.tariff = e
+      this.filter.tariff = e;
     },
     isFittingFilterCompanies(flight) {
       if (this.filter.companies.includes('all')) {
-        return true
+        return true;
       }
       let carrier = flight.itineraries[0][0].carrier;
-      return this.filter.companies.includes(carrier)
+      return this.filter.companies.includes(carrier);
     },
     isFittingFilterTariff(flight) {
       if (this.filter.tariff.includes('all')) {
-        return true
+        return true;
       }
       for (let i =0; i < this.filter.tariff.length; i++) {
         if (!flight[this.filter.tariff[i]]) {
-          return false
+          return false;
         }
       }
       return true
     },
     resetFilters () {
       this.filter.companies = ['all'];
-      this.filter.tariff = ['all']
+      this.filter.tariff = ['all'];
     }
   }
 }

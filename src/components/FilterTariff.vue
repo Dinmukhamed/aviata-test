@@ -2,7 +2,7 @@
   <div class="tariff">
     <div class="reset-filter" @click="resetFilterTariff" v-tooltip="{content: tooltipText, offset: 13}"></div>
     <p class="font-weight-bold">Опции тарифа</p>
-    <label class="check-wrap py-2 mb-0" for="tariffDirect">
+    <label class="check-wrap py-2 mb-0 d-flex align-items-center" for="tariffDirect">
       <input
         class="form-check-input mt-0"
         type="checkbox"
@@ -11,13 +11,13 @@
         @change="updateFilterTariff"
         id="tariffDirect"
       >
-      <img src="../assets/images/checkbox_active.svg" class="checked">
-      <img src="../assets/images/checkbox_normal.svg" class="unchecked">
-      <img src="../assets/images/checkbox_indeterminate.svg" class="checked-hover">
-      <img src="../assets/images/checkbox_hover.svg" class="unchecked-hover">
+      <span class="checkbox checked"></span>
+      <span class="checkbox unchecked"></span>
+      <span class="checkbox checked-hover"></span>
+      <span class="checkbox unchecked-hover"></span>
       <span class="form-check-label ml-2">Только прямые</span>
     </label>
-    <label class="check-wrap py-2 mb-0" for="tariffLuggage">
+    <label class="check-wrap py-2 mb-0 d-flex align-items-center" for="tariffLuggage">
       <input
         class="form-check-input mt-0"
         type="checkbox"
@@ -25,13 +25,13 @@
         value="buggage"
         @change="updateFilterTariff"
         id="tariffLuggage">
-      <img src="../assets/images/checkbox_active.svg" class="checked">
-      <img src="../assets/images/checkbox_normal.svg" class="unchecked">
-      <img src="../assets/images/checkbox_indeterminate.svg" class="checked-hover">
-      <img src="../assets/images/checkbox_hover.svg" class="unchecked-hover">
+      <span class="checkbox checked"></span>
+      <span class="checkbox unchecked"></span>
+      <span class="checkbox checked-hover"></span>
+      <span class="checkbox unchecked-hover"></span>
       <span class="form-check-label ml-2">Только с багажом</span>
     </label>
-    <label class="check-wrap py-2 mb-0" for="tariffRefundable">
+    <label class="check-wrap py-2 mb-0 d-flex align-items-center" for="tariffRefundable">
       <input
         class="form-check-input mt-0"
         type="checkbox"
@@ -39,10 +39,10 @@
         value="refundable"
         @change="updateFilterTariff"
         id="tariffRefundable">
-      <img src="../assets/images/checkbox_active.svg" class="checked">
-      <img src="../assets/images/checkbox_normal.svg" class="unchecked">
-      <img src="../assets/images/checkbox_indeterminate.svg" class="checked-hover">
-      <img src="../assets/images/checkbox_hover.svg" class="unchecked-hover">
+      <span class="checkbox checked"></span>
+      <span class="checkbox unchecked"></span>
+      <span class="checkbox checked-hover"></span>
+      <span class="checkbox unchecked-hover"></span>
       <span class="form-check-label ml-2">Только возвратные</span>
     </label>
   </div>
@@ -60,22 +60,22 @@ export default {
   props: ['filter'],
   watch: {
     filter: function(newVal) {
-      this.checkedNames = newVal
+      this.checkedNames = newVal;
     }
   },
   methods: {
     updateFilterTariff () {
       if (!this.checkedNames.length) {
-        this.checkedNames = ['all']
+        this.checkedNames = ['all'];
       } else {
         let index = this.checkedNames.indexOf('all');
         if (index !== -1) this.checkedNames.splice(index, 1);
       }
 
-      this.$emit('update-filter', this.checkedNames)
+      this.$emit('update-filter', this.checkedNames);
     },
     resetFilterTariff () {
-      this.$emit('update-filter', [])
+      this.$emit('update-filter', []);
     }
   }
 }
